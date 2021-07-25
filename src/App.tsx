@@ -11,9 +11,12 @@ function App() {
       <Button btnType={ButtonType.Link} href={"https://www.baidu.com"}>百度链接</Button>
 
       <h1>menu</h1>
-      <Menu defaultIndex={1} onSelect={()=> {}}>
-            <MenuItem>item</MenuItem>
-            <MenuItem disabled={true}>disabled</MenuItem>
+      <Menu defaultIndex={1} onSelect={(index)=> {
+            console.log(index);
+      }}>
+            <MenuItem index={0}>item</MenuItem>
+            <MenuItem index={2}>disabled</MenuItem>
+            <MenuItem index={1} disabled={true}>disabled</MenuItem>
       </Menu>
     </div>
   );

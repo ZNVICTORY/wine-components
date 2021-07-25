@@ -55,5 +55,5 @@ describe("test Button component", () => {
             expect(element.disabled).toBeTruthy();
             fireEvent.click(element);
             expect(disableProps.onClick).not.toHaveBeenCalled()
-      })
+      });
 })

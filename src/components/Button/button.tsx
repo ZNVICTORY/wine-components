@@ -43,7 +43,7 @@ const Button: React.FC<ButtonProps> = (props) => {
         [`btn-${size}`]: size,
         'disabled': (btnType === ButtonType.Link) && disabled
     });
-    console.log(classes, 'kokokoko')
+
     if( btnType === ButtonType.Link && href ) {
         return (
             <a
