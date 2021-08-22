@@ -16,8 +16,8 @@ const defaultProps = {
       onClick: jest.fn()
 }
 const testProps = {
-      btnType: ButtonType.Primary,
-      size: ButtonSize.Large,
+      btnType: 'primary',
+      size: 'lg',
       className: 'customied'
 }
 const disableProps = {
@@ -36,13 +36,13 @@ describe("test Button component", () => {
             expect(defaultProps.onClick).toHaveBeenCalled(); // 验证按钮的点击事件 是否被调用 到
       });
       it("should render the compoent based on different Props", () => {
-            const wrapper = render(<Button {...testProps}>test</Button>);
+            const wrapper = render(<Button size="lg" btnType="primary" className="ttttttt">test</Button>);
             const element = wrapper.getByText("test");
             expect(element).toBeInTheDocument();
             expect(element).toHaveClass("btn-primary btn-lg customied")
       });
       it("should render a lint when btnType equals link and href is provided", () => {
-            const wrapper = render(<Button btnType={ButtonType.Link} href="http://test">link</Button>);
+            const wrapper = render(<Button btnType={'link'} href="http://test">link</Button>);
             const element = wrapper.getByText("link");
             expect(element).toBeInTheDocument();
             expect(element.tagName).toEqual("A");
