@@ -5,6 +5,8 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import "../src/styles/index.scss"
 library.add(fas)
+
+
 const wrapperStyle: React.CSSProperties = {
   padding: '20px 40px'
 }
