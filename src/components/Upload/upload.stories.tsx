@@ -3,6 +3,7 @@ import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { Upload } from './upload';
 import { UploadFile } from "./upload";
+import Icon from "../Icon/icon";
 
 const checkFileSize = (file: File) => {
     if((Math.round(file.size) / 1024) > 50) {
@@ -37,7 +38,18 @@ const SimpleUpload = () => {
         onChange={action('change')}
         // beforeUpload={checkFileSize}
         beforeUpload={filePromise}
-        />)
+
+        name={"test"}
+        data={{"key": "value"}}
+        headers={{"X-Powered-By": "vikingship"}}
+        // accept=".jpg"
+        multiple
+        drag={true}
+        >
+            <Icon icon="upload" size="5x" theme="secondary" />
+      <br/>
+      <p>Drag file over to upload</p>
+        </Upload>)
 }
 
 storiesOf('Upload Component', module).add('Upload', SimpleUpload)

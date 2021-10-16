@@ -2,6 +2,7 @@ import React, { ChangeEvent, FC, useRef, useState } from "react";
 import axios from 'axios';
 import Button from "../Button/button";
 import UploadList from "./uploadList";
+import Dragger from "../Dragger/dragger";
 
 export type UploadFileStatus = 'ready' | 'uploading' | 'success' | 'error';
 
@@ -25,6 +26,13 @@ export interface IUploadProps {
     onError?:(error: any, file: File) => void;
     onChange?:(file: File) => void;
     onRemove?: (file: UploadFile) => void;
+    headers?: {[key: string]: any};
+    name?: string;
+    data?: {[key: string]: any};
+    withCredentials?: boolean;
+    accept?:string;
+    multiple?:boolean,
+    drag?: boolean
 }
 
 export const Upload:FC<IUploadProps> = (props) => {
@@ -36,7 +44,16 @@ export const Upload:FC<IUploadProps> = (props) => {
         onProgress,
         onSuccess,
         onError,
-        onChange
+        onChange,
+        onRemove,
+        headers,
+        name,
+        data,
+        withCredentials,
+        accept,
+        multiple,
+        children,
+        drag
      } = props;
 
      const fileInput = useRef<HTMLInputElement>(null);
@@ -69,6 +86,14 @@ export const Upload:FC<IUploadProps> = (props) => {
                 fileInput.current.value = ''
             }
      }
+     const handleRemove = (file: UploadFile) => {
+            setFileList(prevList => {
+                return prevList.filter(item => item.uid !== file.uid)
+            })
+            if(onRemove) {
+                onRemove(file)
+            }
+     }
      const UploadFiles = (files: FileList) => {
          let postFiles = Array.from(files);
          postFiles.forEach(file => {
@@ -96,13 +121,23 @@ export const Upload:FC<IUploadProps> = (props) => {
              percent: 0,
              raw: file,
          }
-        setFileList([_file, ...fileList])
+        // setFileList([_file, ...fileList])
+        setFileList(prev => {
+            return [_file, ...prev]
+        })
         const formData = new FormData();
-        formData.append(file.name, file);
+        formData.append(name || "file", file);
+        if(data) {
+            Object.keys(data).forEach(key => {
+                formData.append(key, data[key]);
+            })
+        }
         axios.post(action, formData, {
             headers: {
+                ...headers,
                 'Content-Type': 'multipart/form-data'
             },
+            withCredentials,
             onUploadProgress: (e) => {
                 let percentage = Math.round((e.loaded * 100) / e.total ) || 0;
                 if(percentage) {
@@ -135,21 +170,32 @@ export const Upload:FC<IUploadProps> = (props) => {
      }
 
     return (
-        <div className="viking-upload-component">
-            <Button 
+        <div className="viking-upload-component" onClick={handleClick}>
+            {/* <Button 
                 btnType="primary"
                 onClick={handleClick}
-            >upload file</Button>
+            >upload file</Button> */}
+            {drag ? 
+            <Dragger onFile={(files) => {UploadFiles(files)}}>
+              {children}
+            </Dragger>:
+            children
+          }
             <input 
                 ref={fileInput}
                 onChange={handleFileChange}
                 className="viking-file-input" 
                 type="file" 
                 style={{display: 'none'}}
+                accept={accept}
+                multiple={multiple}
             />
-            <UploadList fileList={fileList} onRemove={() => {}} />
+            <UploadList fileList={fileList} onRemove={handleRemove} />
         </div>
     )
+}
+Upload.defaultProps = {
+    name: 'file'
 }
 
 export default Upload;
