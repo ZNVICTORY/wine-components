@@ -58,3 +58,4 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ##  prepublish 
 
 #### peerDependencies了解
+增加提前检查 commit
