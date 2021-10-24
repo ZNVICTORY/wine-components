@@ -54,3 +54,5 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ## rimraf 删除文件
 
 ## npm link 测试 组件
+
+##  prepublish

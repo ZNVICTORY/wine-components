@@ -1,10 +1,26 @@
 {
   "name": "winecomponents",
-  "version": "0.1.0",
-  "private": true,
-  "main": "build/index.js",
-  "module": "build/index.js",
-  "types": "build/index.d.ts",
+  "version": "0.1.2",
+  "private": false,
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "description": "React Components Library",
+  "author": "victory_wine",
+  "license": "MIT",
+  "keywords": [
+      "Component",
+      "UI",
+      "React"
+  ],
+  "homepage": "https://gitee.com/like129/components",
+  "repository": {
+      "type": "git",
+      "url": "https://gitee.com/like129/components"
+  },
+  "files": [
+      "dist"
+  ],
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.26",
     "@fortawesome/free-solid-svg-icons": "^5.12.0",
@@ -16,15 +32,16 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "clean": "rimraf ./build",
+    "clean": "rimraf ./dist",
     "build": "npm run clean && npm run build-ts && npm run build-css",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build-ts": "tsc -p tsconfig.build.json",
-    "build-css": "node-sass ./src/styles/index.scss  ./build/index.css",
+    "build-css": "node-sass ./src/styles/index.scss  ./dist/index.css",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "storybook-docs": "start-storybook --docs --no-manager-cache"
+    "storybook-docs": "start-storybook --docs --no-manager-cache",
+    "prepublish": "npm run build"
   },
   "eslintConfig": {
     "extends": [
