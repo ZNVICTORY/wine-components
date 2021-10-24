@@ -32,7 +32,7 @@
   "scripts": {
     "start": "react-scripts start",
     "clean": "rimraf ./dist",
-    "lint": " eslint --ext js,ts,jsx,tsx src --max-warnings",
+    "lint": " eslint --ext js,ts,jsx,tsx src --max-warnings 10",
     "build": "npm run clean && npm run build-ts && npm run build-css",
     "test": "react-scripts test",
     "test:nowatch": "cross-env CI=true react-scripts test",
@@ -73,7 +73,7 @@
   },
   "husky":{
       "hooks": {
-          "pre-commit": "npm run test:nowatch"
+          "pre-commit": "npm run test:nowatch && npm run lint"
       }
   },
   "devDependencies": {
