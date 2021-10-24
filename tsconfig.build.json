@@ -1,0 +1,18 @@
+{
+    "compilerOptions":{
+        "target": "ES3",
+        "outDir": "build",
+        "module": "esnext",
+        "declaration": true,
+        "jsx": "react",
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true
+    },
+    "include": [
+        "src"
+    ],
+    "exclude": [
+        "src/**/*.test.tsx",
+        "src/**/*.stories.tsx"
+    ]
+}

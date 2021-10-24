@@ -44,3 +44,13 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+## tsconfig.build.ts
+
+## 生成 样式文件
+*** 使用 node-sass 生成 css
+
+## rimraf 删除文件
+
+## npm link 测试 组件
