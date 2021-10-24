@@ -55,4 +55,6 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## npm link 测试 组件
 
-##  prepublish
+##  prepublish 
+
+#### peerDependencies了解
