@@ -9,9 +9,9 @@ env:
 
 
 before_script:
-    - npm -v && node -v
+  - npm -v && node -v
 script:
-    - npm run build-storybook
+  - npm run build-storybook
 deploy:
   provider: pages
   skip_cleanup: true
