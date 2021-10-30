@@ -19,4 +19,4 @@ deploy:
   # keep_history: true
   local_dir: storybook-static
   on:
-    branch: test03
+    branch: master
