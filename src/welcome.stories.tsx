@@ -9,7 +9,7 @@ storiesOf('Welcome page', module)
         <p>vikingship 是为慕课网课程打造的一套教学组件库，从零到一让大家去学习</p>
         <h3>安装试试</h3>
         <code>
-          npm install vikingship --save
+          npm install winecomponents --save
         </code>
       </>
     )

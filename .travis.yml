@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - "stable"
+cache: 
+  directories:
+  - node_modules
+env:
+  - CI=true
+
+
+before_script:
+    - npm -v && node -v
+    - npm install
